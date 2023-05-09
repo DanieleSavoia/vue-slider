@@ -1,105 +1,99 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
 
 .container {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+	max-width: 1000px;
+	margin: 0 auto;
+	padding: 0 1rem;
 }
 
-.item {
-    float: left;
-    width: 700px;
-    height: 300px;
-    position: relative;
+.carousel {
+	display: flex;
+	width: 900px;
+	max-width: 100%;
+	height: 500px;
+	max-height: 80vh;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 }
 
-.item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+.highlighted {
+	height: 100%;
+	width: 80%;
 }
 
-.item .text {
-    position: absolute;
-    right: 20px;
-    bottom: 20px;
-    text-align: right;
-    color: white;
+.highlighted .slide {
+	position: relative;
+	display: none;
+	height: 100%;
+}
+
+.highlighted img {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: center;
+}
+
+.highlighted .contents {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	padding: 1.5rem;
+	color: white;
+	text-align: right;
+}
+
+.carousel .highlighted .active {
+	display: block;
 }
 
 .thumbs {
-    float: left;
-    height: 300px;
-    background: #000;
-    position: relative;
+	position: relative;
+	width: 20%;
 }
 
-.thumb {
-    height: calc((300px) / 5);
-    opacity: 0.5;
+.thumbs .thumbs-imgs {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
 }
 
-.thumb img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+.carousel .btn {
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	color: white;
+	font-size: 2.5rem;
+	z-index: 9;
 }
 
-.thumb.active {
-    border: 2px solid #ccc;
-    opacity: 1;
+.carousel .btn-prev {
+	top: 15px;
 }
 
-.prev, .next {
-    width: 20px;
-    height: 20px;
-    margin: 10px 0;
-    border-radius: 50%;
-    background: #ccc;
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%);
-    cursor: pointer;
-    z-index: 999;
+.carousel .btn-next {
+	bottom: 15px;
 }
 
-.next {
-    bottom: 0;
+.thumbs img {
+	flex: 1 0 0;
+	display: block;
+	width: 100%;
+	height: 0;
+	object-fit: cover;
+	filter: brightness(.3);
 }
 
-/*
-EXTRA: in questo esempio gli accordion vengono creati
-usando 2 bordi di un quadratino ruotato di 45 gradi
-In una versione base si possono usare delle icone
-oppure i caratteri ∧ (&and;) e ∨ (&or;)
- */
-.prev::after {
-    content: '';
-    width: 10px;
-    height: 10px;
-    border-top: 1px solid black;
-    border-right: 1px solid black;
-    display: block;
-    position: absolute;
-    top: 35%;
-    left: 50%;
-    transform: translate(-50%) rotate(-45deg);
-}
-
-.next::before {
-    content: '';
-    width: 10px;
-    height: 10px;
-    border-top: 1px solid black;
-    border-right: 1px solid black;
-    display: block;
-    position: absolute;
-    bottom: 35%;
-    left: 50%;
-    transform: translate(-50%) rotate(135deg);
+.thumbs .active {
+	filter: brightness(1);
+	border: 5px solid lightgrey;
 }
